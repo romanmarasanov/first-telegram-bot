@@ -8,16 +8,25 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
 
 public class MyFirstLongPollingBot extends TelegramLongPollingBot {
-    ;
     private final Girls girls = new Girls();
+    private final Properties props = new Properties();
     private final Map<User, UserState> statesMap = new ConcurrentHashMap<>(16, 0.75F, 1);
     private final Map<User, Date> subsMap = new HashMap<>();
     private final SubscribersHandler handler = new SubscribersHandler(this);
     private boolean workerInProgress = false;
+
+    public MyFirstLongPollingBot(){
+        try {
+            props.load(Application.class.getClassLoader().getResourceAsStream("config.properties"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public String getBotUsername() {
@@ -26,7 +35,7 @@ public class MyFirstLongPollingBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotToken() {
-        return "1556025595:AAFRhvGAe_tqmHxHkhZKSqD2nfv3N2uQWes";
+        return props.getProperty("token");
     }
 
     @Override
