@@ -6,4 +6,5 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
-D:\Study\polismail\telegram-bots\first-bot\src\main\resources\config.properties
+# Bot token
+/../../../../../../:\Study\polismail\telegram-bots\first-bot\src\main\resources\
